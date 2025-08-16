@@ -15,7 +15,7 @@ struct data_t {
 
 int hello(void *ctx) {
     struct data_t data = {};
-    char message[] = "Hello World   ";
+    char message[] = "Hello World";
     
     data.pid = bpf_get_current_pid_tgid() >> 32;
     data.uid = bpf_get_current_uid_gid() & 0xFFFFFFFF;
