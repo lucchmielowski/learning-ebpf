@@ -23,9 +23,10 @@ struct {
 
 struct {
 	__uint(type, BPF_MAP_TYPE_PERF_EVENT_ARRAY);
+	__uint(max_entries, 0);
 } output SEC(".maps");
 
-SEC("tracepoint/syscalls/sys_enter_execve")
+SEC("kprobe/sys_execve")
 int hello(struct trace_event_raw_sys_enter *ctx) {
 	char default_msg[12] = "Hello World";
 	struct data_t data = {};
